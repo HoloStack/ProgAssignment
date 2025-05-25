@@ -4,57 +4,30 @@ using System.Media;
 using System.Threading;
 using System.IO;
 using chat.ChatBot;
+
 namespace CybersecurityChatbot
 {
     class Program
     {
-        static Dictionary Responses = Responces.
-        static Dictionary<string, List<string>> keywordResponses = new Dictionary<string, List<string>>()
-        {
-            {"password", new List<string>{
-                "Use a strong password with numbers, symbols, and both upper- and lowercase letters.",
-                "Never reuse passwords across important accounts.",
-                "Change passwords regularly to stay secure.",
-                "Avoid using personal information in your passwords.",
-                "Consider using a trusted password manager."
-            }},
-            {"scam", new List<string>{
-                "Ignore emails asking for personal or banking information.",
-                "Be suspicious of messages that create urgency or fear.",
-                "Double-check URLs and sender addresses.",
-                "Report suspicious emails to your IT department or email provider.",
-                "Scammers often impersonate trusted brands."
-            }},
-            {"privacy", new List<string>{
-                "Use multi-factor authentication where possible.",
-                "Adjust privacy settings on social media accounts.",
-                "Don’t overshare personal details online.",
-                "Use incognito mode or VPN for private browsing.",
-                "Review app permissions regularly."
-            }},
-            {"phishing", new List<string>{
-                "Phishing emails often look legitimate but have hidden malicious links.",
-                "Hover over links to check where they lead before clicking.",
-                "Avoid downloading attachments from unknown sources.",
-                "Check for spelling mistakes or odd phrasing — signs of phishing.",
-                "When in doubt, contact the sender directly using verified info."
-            }}
-        };
-
+        // Dictionary mapping keywords to lists of responses
+        static Dictionary<string,List<String>> keywordResponses = ResponcesList.keywordResponses;
+        
+        // Simple memory to store user information (e.g., name)
         static Dictionary<string, string> memory = new Dictionary<string, string>();
 
+        // Lists of words to detect user sentiment
         static List<string> positiveSentiments = new List<string>{"interested", "curious", "excited", "keen"};
         static List<string> worriedSentiments = new List<string>{"worried", "scared", "nervous", "concerned", "anxious"};
         static List<string> frustratedSentiments = new List<string>{"frustrated", "tired", "angry", "fed up"};
 
         static void Main(string[] args)
         {
-            PlayGreeting();
-            ShowAsciiArt();
+            PlayGreeting(); // Play greeting audio
+            ShowAsciiArt(); // Display ASCII art
 
             Console.Write("Enter your name: ");
             string name = Console.ReadLine();
-            memory["name"] = name;
+            memory["name"] = name; // Store user's name
             Respond($"Welcome, {name}! I'm here to help you learn how to stay safe online. Ask me anything about cybersecurity! Type 'exit' to quit.\n");
 
             while (true)
@@ -74,10 +47,12 @@ namespace CybersecurityChatbot
                     break;
                 }
 
+                // Detect and respond to user sentiment
                 if (DetectSentiment(input, out string mood))
                 {
                     RespondWithSentiment(mood);
                 }
+                // Respond to specific questions
                 else if (input.Contains("how are you"))
                 {
                     Respond("I'm fully patched and secure! Thanks for asking.");
@@ -92,6 +67,7 @@ namespace CybersecurityChatbot
                 }
                 else
                 {
+                    // Try to match input with known keywords
                     bool matched = false;
                     foreach (var keyword in keywordResponses.Keys)
                     {
@@ -102,6 +78,7 @@ namespace CybersecurityChatbot
                             break;
                         }
                     }
+                    // If no match, provide a fallback response
                     if (!matched)
                     {
                         Respond($"I'm not sure about that, {name}, but I'm learning more every day! Try asking about passwords, scams, or privacy.");
@@ -110,6 +87,7 @@ namespace CybersecurityChatbot
             }
         }
 
+        // Plays a greeting sound if can be found 
         static void PlayGreeting()
         {
             try
@@ -126,6 +104,7 @@ namespace CybersecurityChatbot
             }
         }
 
+        // Displays ASCII art from a file
         static void ShowAsciiArt()
         {
             try
@@ -141,6 +120,7 @@ namespace CybersecurityChatbot
             }
         }
 
+        // Outputs a response in yellow color
         static void Respond(string message)
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
@@ -148,6 +128,7 @@ namespace CybersecurityChatbot
             Console.ResetColor();
         }
 
+        // Shows a random tip related to the given topic
         static void ShowRandomTip(string topic)
         {
             var rand = new Random();
@@ -156,6 +137,7 @@ namespace CybersecurityChatbot
             Respond(response);
         }
 
+        // Detects sentiment in the user's input
         static bool DetectSentiment(string input, out string sentiment)
         {
             foreach (var word in worriedSentiments)
@@ -168,6 +150,7 @@ namespace CybersecurityChatbot
             return false;
         }
 
+        // Responds appropriately based on detected sentiment
         static void RespondWithSentiment(string sentiment)
         {
             string name = memory.ContainsKey("name") ? memory["name"] : "friend";

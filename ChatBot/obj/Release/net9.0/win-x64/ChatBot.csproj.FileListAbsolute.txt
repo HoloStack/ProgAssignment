@@ -1,0 +1,17 @@
+/home/demonkoi/projects/chat/ChatBot/bin/Release/net9.0/win-x64/ChatBot.exe
+/home/demonkoi/projects/chat/ChatBot/bin/Release/net9.0/win-x64/ChatBot.deps.json
+/home/demonkoi/projects/chat/ChatBot/bin/Release/net9.0/win-x64/ChatBot.runtimeconfig.json
+/home/demonkoi/projects/chat/ChatBot/bin/Release/net9.0/win-x64/ChatBot.dll
+/home/demonkoi/projects/chat/ChatBot/bin/Release/net9.0/win-x64/ChatBot.pdb
+/home/demonkoi/projects/chat/ChatBot/bin/Release/net9.0/win-x64/System.Windows.Extensions.dll
+/home/demonkoi/projects/chat/ChatBot/obj/Release/net9.0/win-x64/ChatBot.csproj.AssemblyReference.cache
+/home/demonkoi/projects/chat/ChatBot/obj/Release/net9.0/win-x64/ChatBot.GeneratedMSBuildEditorConfig.editorconfig
+/home/demonkoi/projects/chat/ChatBot/obj/Release/net9.0/win-x64/ChatBot.AssemblyInfoInputs.cache
+/home/demonkoi/projects/chat/ChatBot/obj/Release/net9.0/win-x64/ChatBot.AssemblyInfo.cs
+/home/demonkoi/projects/chat/ChatBot/obj/Release/net9.0/win-x64/ChatBot.csproj.CoreCompileInputs.cache
+/home/demonkoi/projects/chat/ChatBot/obj/Release/net9.0/win-x64/ChatBot.csproj.Up2Date
+/home/demonkoi/projects/chat/ChatBot/obj/Release/net9.0/win-x64/ChatBot.dll
+/home/demonkoi/projects/chat/ChatBot/obj/Release/net9.0/win-x64/refint/ChatBot.dll
+/home/demonkoi/projects/chat/ChatBot/obj/Release/net9.0/win-x64/ChatBot.pdb
+/home/demonkoi/projects/chat/ChatBot/obj/Release/net9.0/win-x64/ChatBot.genruntimeconfig.cache
+/home/demonkoi/projects/chat/ChatBot/obj/Release/net9.0/win-x64/ref/ChatBot.dll

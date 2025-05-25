@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "E6GAHx5Zd6M=",
+  "success": true,
+  "projectFilePath": "/home/demonkoi/projects/chat/ChatBot/ChatBot.csproj",
+  "expectedPackageFiles": [
+    "/home/demonkoi/.nuget/packages/system.windows.extensions/9.0.5/system.windows.extensions.9.0.5.nupkg.sha512",
+    "/home/demonkoi/.nuget/packages/microsoft.aspnetcore.app.ref/9.0.4/microsoft.aspnetcore.app.ref.9.0.4.nupkg.sha512"
+  ],
+  "logs": []
+}

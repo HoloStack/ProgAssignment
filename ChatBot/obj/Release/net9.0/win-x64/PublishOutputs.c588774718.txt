@@ -1,0 +1,6 @@
+/home/demonkoi/projects/chat/ChatBot/publish/ChatBot.exe
+/home/demonkoi/projects/chat/ChatBot/publish/ChatBot.dll
+/home/demonkoi/projects/chat/ChatBot/publish/ChatBot.deps.json
+/home/demonkoi/projects/chat/ChatBot/publish/ChatBot.runtimeconfig.json
+/home/demonkoi/projects/chat/ChatBot/publish/ChatBot.pdb
+/home/demonkoi/projects/chat/ChatBot/publish/System.Windows.Extensions.dll

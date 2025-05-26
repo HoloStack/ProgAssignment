@@ -155,6 +155,8 @@ namespace CybersecurityChatbot
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("Bot: " + message);
             Console.ResetColor();
+            }
+
         // Displays a random tip for a given keyword topic
         static void ShowRandomTip(string topic)
         {

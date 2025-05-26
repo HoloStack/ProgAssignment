@@ -9,22 +9,28 @@ namespace CybersecurityChatbot
 {
     class Program
     {
+        // Keyword dictionary storing predefined topic-based responses
         static Dictionary<string, List<string>> keywordResponses = ResponcesList.keywordResponses;
+
+        // Memory dictionary for storing user-specific info like name and favorite topic
         static Dictionary<string, string> memory = new Dictionary<string, string>();
 
+        // Sentiment word lists for basic emotion detection
         static List<string> positiveSentiments = new List<string>{"interested", "curious", "excited", "keen"};
         static List<string> worriedSentiments = new List<string>{"worried", "scared", "nervous", "concerned", "anxious"};
         static List<string> frustratedSentiments = new List<string>{"frustrated", "tired", "angry", "fed up"};
 
         static void Main(string[] args)
         {
-            PlayGreeting();
-            ShowAsciiArt();
+            PlayGreeting();  // Play intro sound
+            ShowAsciiArt();  // Display intro ASCII art
 
+            // Ask for and store the user's name
             Console.Write("Enter your name: ");
             string name = Console.ReadLine() ?? "User";
             memory["name"] = name;
 
+            // Ask for and validate user's favorite cybersecurity topic
             string favorite;
             while (true)
             {
@@ -41,8 +47,10 @@ namespace CybersecurityChatbot
                 }
             }
 
+            // Greet and explain how to interact with the bot
             Respond($"Welcome, {name}! I'm here to help you learn how to stay safe online. Feel free to ask me about {favorite} or anything else cybersecurity-related. Type 'exit' to quit.\n");
 
+            // Main chatbot loop
             while (true)
             {
                 Console.Write("You: ");
@@ -60,10 +68,12 @@ namespace CybersecurityChatbot
                     break;
                 }
 
+                // Check for sentiment and respond
                 if (DetectSentiment(input, out string mood))
                 {
                     RespondWithSentiment(mood);
                 }
+                // Handle basic small-talk or guidance
                 else if (input.Contains("how are you"))
                 {
                     Respond("I'm fully patched and secure! Thanks for asking.");
@@ -78,6 +88,7 @@ namespace CybersecurityChatbot
                 }
                 else
                 {
+                    // Try to match user input to a known keyword
                     bool matched = false;
                     foreach (var keyword in keywordResponses.Keys)
                     {
@@ -88,6 +99,7 @@ namespace CybersecurityChatbot
                             break;
                         }
                     }
+                    // If no keyword match found, provide fallback response
                     if (!matched)
                     {
                         Respond($"I'm not sure about that, {name}, but I'm learning more every day! Try asking about passwords, scams, or privacy.");
@@ -96,6 +108,7 @@ namespace CybersecurityChatbot
             }
         }
 
+        // Attempts to play a greeting audio file at startup
         static void PlayGreeting()
         {
             try
@@ -112,6 +125,7 @@ namespace CybersecurityChatbot
             }
         }
 
+        // Displays startup ASCII art from a file
         static void ShowAsciiArt()
         {
             try
@@ -127,6 +141,7 @@ namespace CybersecurityChatbot
             }
         }
 
+        // Formats and displays bot responses in yellow
         static void Respond(string message)
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
@@ -134,19 +149,21 @@ namespace CybersecurityChatbot
             Console.ResetColor();
         }
 
+        // Displays special responses (e.g., for favorite topic) in cyan
         static void RespondSpecial(string message)
         {
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("Bot: " + message);
-            Console.ResetColor();
-        }
+            Console.ResetColor();n        }
 
+        // Displays a random tip for a given keyword topic
         static void ShowRandomTip(string topic)
         {
             var rand = new Random();
             var tips = keywordResponses[topic];
             string response = tips[rand.Next(tips.Count)];
 
+            // Special message if topic is the user's favorite
             if (memory.ContainsKey("favorite") && topic == memory["favorite"])
             {
                 RespondSpecial("Since it's your favorite topic, I'm sure you know a lot about it. Here's some extra info:");
@@ -155,6 +172,7 @@ namespace CybersecurityChatbot
             Respond(response);
         }
 
+        // Detects basic sentiment from input text
         static bool DetectSentiment(string input, out string sentiment)
         {
             foreach (var word in worriedSentiments)
@@ -167,6 +185,7 @@ namespace CybersecurityChatbot
             return false;
         }
 
+        // Responds to detected sentiment with empathetic messages
         static void RespondWithSentiment(string sentiment)
         {
             string name = memory.ContainsKey("name") ? memory["name"] : "friend";

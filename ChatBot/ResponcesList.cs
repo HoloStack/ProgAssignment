@@ -1,4 +1,5 @@
-public class Responces
+namespace chat.ChatBot;
+public class ResponcesList
 {
     public static Dictionary<string, List<string>> keywordResponses = new Dictionary<string, List<string>> {
         { "phishing", new List<string> {
